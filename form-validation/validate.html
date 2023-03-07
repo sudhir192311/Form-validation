@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+        h1{text-align: center;}
+    </style>
+<h1 >validation checking</h1>
+<form id="myForm" onsubmit="return validateForm()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+
+  <button type="submit">Submit</button>
+</form>
+<script>
+function validateForm() {
+  // Get form input values
+  var name = document.forms["myForm"]["name"].value;
+  var email = document.forms["myForm"]["email"].value;
+  var password = document.forms["myForm"]["password"].value;
+
+  // Validate name
+  if (name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+
+  // Validate email
+  if (email == "") {
+    alert("Email must be filled out");
+    return false;
+  } else if (!/\S+@\S+\.\S+/.test(email)) {
+    alert("Invalid email address");
+    return false;
+  }
+
+  // Validate password
+  if (password == "") {
+    alert("Password must be filled out");
+    return false;
+  } else if (password.length < 8) {
+    alert("Password must be at least 8 characters long");
+    return false;
+  }
+
+  // If all validations pass, return true
+  return true;
+}
+</script>
+</body>
+</html>
